@@ -25,6 +25,35 @@ S.ModalForm = styled.form`
   flex-direction: column;
   gap: 16px;
 `;
+S.Property = styled.span`
+  max-width: 500px;
+  font-weight: bold;
+  padding-bottom: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+S.Value = styled.span`
+  max-width: 300px;
+  width: max-content;
+  font-style: italic;
+  justify-self: end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+S.Item = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border-bottom: 1px dotted #c6c6c6;
+  overflow: hidden;
+  margin: 4px;
+
+  :hover {
+    cursor: pointer;
+    background-color: #c6c6c630;
+  }
+`;
 
 export const Widget = () => {
   const [actualID, setActualID] = useState();
@@ -38,7 +67,7 @@ export const Widget = () => {
   const [road, setRoad] = useState();
   const [roadRegion, setRoadRegion] = useState();
   const [station, setStation] = useState();
-  const [searchStation, setSearchStation] = useState();
+  const [arStation, setArStation] = useState();
 
   const onSubmitStationHandler = (e) => {
     setIsLoading(true);
@@ -66,9 +95,10 @@ export const Widget = () => {
     setAnLoading(true);
     axios
       .get(
-        `http://openarc.ru/prognosis/rest/prognosis/station?roadid=${road}&dp_id=${roadRegion}&st_code=${station}`
+        `prognosis/rest/prognosis/station?roadid=${road}&dp_id=${roadRegion}&st_code=${station}`
       )
       .then((res) => {
+        setArStation(res.data);
         console.log(res);
         setAnLoading(false);
       })
@@ -107,6 +137,7 @@ export const Widget = () => {
             onChange={setValueFrom}
             modal={setModalActive}
             fetchID={setActualID}
+            req={true}
           />
           <Input
             id={2}
@@ -116,8 +147,11 @@ export const Widget = () => {
             onChange={setValueTo}
             modal={setModalActive}
             fetchID={setActualID}
+            req={true}
           />
-          <Button img={true} labelTranslate>Получить</Button>
+          <Button img={true} labelTranslate>
+            Получить
+          </Button>
         </S.Form>
         <Modal active={modalActive} setActive={setModalActive}>
           <S.ModalForm onSubmit={(e) => onSubmitSearchHandler(e)}>
@@ -129,40 +163,23 @@ export const Widget = () => {
               <Loader />
             ) : (
               <div>
-                <label htmlFor="radio1">
-                  1
-                  <input
-                    type="radio"
-                    name="station"
-                    id="radio1"
-                    onChange={(e) => setSearchStation(e)}
-                  />
-                </label>
-                <label htmlFor="radio2">
-                  2
-                  <input
-                    type="radio"
-                    name="station"
-                    id="radio2"
-                    onChange={(e) => setSearchStation(e)}
-                  />
-                </label>
-                <label htmlFor="radio3">
-                  3
-                  <input
-                    type="radio"
-                    name="station"
-                    id="radio3"
-                    onChange={(e) => setSearchStation(e)}
-                  />
-                </label>
+                {arStation
+                  ? arStation
+                      .map((el) => (
+                        <S.Item>
+                          <S.Property>Станция: </S.Property>
+                          <S.Value>{el.station}</S.Value>
+                        </S.Item>
+                      ))
+                      .slice(0, 4)
+                  : null}
               </div>
             )}
             <Button
               onClick={onClickAddStHandler}
               absolute
-              bottom="20px"
-              right="20px"
+              bottom="20"
+              right="20"
             >
               Добавить
             </Button>

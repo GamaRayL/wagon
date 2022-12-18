@@ -20,8 +20,9 @@ S.Button = styled.button`
   overflow: hidden;
   width: -webkit-fill-available;
   position: ${(props) => (props.absolute ? "absolute" : "inherit")};
-  bottom: ${(props) => (props.bottom ? props.bottom : "inherit")};
-  right: ${(props) => (props.right ? props.right : "inherit")};
+  width: ${(props) => (props.absolute ? "auto" : "-webkit-fill-available")};
+  bottom: ${(props) => (props.bottom ? props.bottom + "px" : "inherit")};
+  right: ${(props) => (props.right ? props.right + "px" : "inherit")};
 
   @media (max-width: 480px) {
     font-size: 14px;
@@ -80,7 +81,6 @@ export const Button = (props) => {
     left,
     right,
   } = props;
-  console.log(img);
   return (
     <S.Button onClick={onClick} {...props}>
       <div>

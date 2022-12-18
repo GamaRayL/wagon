@@ -16,8 +16,8 @@ S.Modal = styled.div`
   pointer-events: ${(props) => (props.active ? "all" : "none")};
 `;
 S.Content = styled.div`
-  width: 50vw;
-  height: 50vh;
+  width: 20vw;
+  height: 34vh;
   padding: 20px;
   border-radius: 12px;
   background-color: white;

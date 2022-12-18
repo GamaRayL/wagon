@@ -42,33 +42,27 @@ export const Total = ({ total }) => {
       <S.Line></S.Line>
       <S.Item>
         <S.Property>Расчётное время в пути: </S.Property>
-        <S.Value>{total.title}</S.Value>
+        <S.Value>46 часов</S.Value>
       </S.Item>
       <S.Item>
-        <S.Property>Расчётное</S.Property>
-        <S.Value>dsds</S.Value>
+        <S.Property>Здесь должны быть другие параметры</S.Property>
+        <S.Value>-</S.Value>
       </S.Item>
       <S.Item>
-        <S.Property>
-          Расчётное время в пути:dsssssssssssssssssssssssssss sdsdsd{" "}
-        </S.Property>
-        <S.Value>{total.title}</S.Value>
+        <S.Property>Здесь должны быть другие параметры</S.Property>
+        <S.Value>-</S.Value>
       </S.Item>
       <S.Item>
-        <S.Property>
-          Расчётноеdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsds время в пути:{" "}
-        </S.Property>
-        <S.Value>{total.title}</S.Value>
+        <S.Property>Здесь должны быть другие параметры</S.Property>
+        <S.Value>-</S.Value>
       </S.Item>
       <S.Item>
-        <S.Property>Расчётное время в пути: </S.Property>
-        <S.Value>
-          sddddddddddddddddddddddddddddddddddddddddddddddddddddd
-        </S.Value>
+        <S.Property>Здесь должны быть другие параметры</S.Property>
+        <S.Value>-</S.Value>
       </S.Item>
       <S.Item>
-        <S.Property>Расчётное время в пути: </S.Property>
-        <S.Value>{total.title}</S.Value>
+        <S.Property>Здесь должны быть другие параметры</S.Property>
+        <S.Value>-</S.Value>
       </S.Item>
     </S.Total>
   );

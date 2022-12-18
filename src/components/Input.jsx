@@ -80,7 +80,8 @@ S.Icon = styled.img`
 `;
 
 export const Input = (props) => {
-  const { placeholder, onChange, modal, settings, value, fetchID, id } = props;
+  const { placeholder, onChange, modal, settings, value, fetchID, id, req } =
+    props;
   const onClickHandler = () => {
     modal(true);
     fetchID(id);
@@ -88,12 +89,9 @@ export const Input = (props) => {
   return (
     <S.InputGroup>
       <S.InputField
+        required={req}
         key={id}
-        required
         placeholder={placeholder}
-        type="number"
-        min={0}
-        max={3701}
         onChange={(e) => onChange(e.target.value)}
         value={value}
       />
