@@ -17,10 +17,11 @@ S.Button = styled.button`
   transition: all 0.2s;
   cursor: pointer;
   user-select: none;
-
-  position: ${(props) => (props.absolute ? "absolute" : "default")};
-  bottom: ${(props) => (props.bottom ? props.bottom : "default")};
-  right: ${(props) => (props.right ? props.right : "default")};
+  overflow: hidden;
+  width: -webkit-fill-available;
+  position: ${(props) => (props.absolute ? "absolute" : "inherit")};
+  bottom: ${(props) => (props.bottom ? props.bottom : "inherit")};
+  right: ${(props) => (props.right ? props.right : "inherit")};
 
   @media (max-width: 480px) {
     font-size: 14px;
@@ -35,7 +36,7 @@ S.Button = styled.button`
   ${S.Button} img {
     display: ${(props) => (props.img ? "block" : "none")};
     transform-origin: center center;
-    transition: transform 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 
   ${S.Button}:hover ${S.SvgWrapper} {
@@ -48,7 +49,7 @@ S.Button = styled.button`
 
   ${S.Button}:hover span {
     transform: ${(props) =>
-      props.labelTranslate ? "translateX(3em)" : "inherit"};
+      props.labelTranslate ? "translateX(7em)" : "inherit"};
     color: #c6c6c6;
   }
 
